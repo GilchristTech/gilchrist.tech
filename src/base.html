@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block head %}{% endblock %}
+</head>
+<body>
+	{% block pre_header %}{% endblock %}
+	<header>
+		<h1>gilchrist.tech</h1>
+	</header>
+
+	<main>
+		{% block main %}{% endblock %}
+	</main>
+
+	<footer>
+		<span>Gilchrist Tech &copy;2021</span><br>
+		<a href="mailto:contact@gilchrist.tech">Contact</a><br>
+		<a href="https://github.com/GilchristTech/">GitHub</a><br>
+		<a href="https://github.com/GilchristTech/portfolio-site/">This site's source code</a>
+		<p>Background images from <a href="https://unsplash.com/">unsplash.com</a></p>
+	</footer>
+</body>
+</html>

@@ -1,10 +1,10 @@
-const Path                 = require('path');
-const HtmlWebpackPlugin    = require('html-webpack-plugin');
-const CopyWebpackPlugin    = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Path                  = require('path');
+const HtmlWebpackPlugin     = require('html-webpack-plugin');
+const CopyWebpackPlugin     = require('copy-webpack-plugin');
+const MiniCssExtractPlugin  = require('mini-css-extract-plugin');
 
-function src ()          { return Path.resolve(__dirname, 'src', ...arguments);          }
-function dist ()         { return Path.resolve(__dirname, 'dist', ...arguments);         }
+function src ()  { return Path.resolve(__dirname, 'src', ...arguments);  }
+function dist () { return Path.resolve(__dirname, 'dist', ...arguments); }
 
 module.exports = {
 	mode: "development",
@@ -26,7 +26,37 @@ module.exports = {
 
 	module: {
 		rules: [
-			{ test: /\.css$/i, use: [ MiniCssExtractPlugin.loader, 'css-loader' ] }
+			{ test: /\.(png|tiff|jpe?g|svg|gif|webp)$/i,
+				type: 'asset/resource',
+				generator: {
+					filename: 'static/img/[name]-[hash:8][ext]'
+				}
+			},
+
+			{ test: /^background(-.+)?\.(png|tiff|jpe?g|webp)$/i,
+				loader: "responsive-loader",
+				options: {
+					publicPath: "static/bg/[name]-[hash:8][ext]",
+					min: 300,
+					max: 2000,
+					steps: 10
+				}
+			},
+
+			{ test: /\.css$/i, use: [ MiniCssExtractPlugin.loader, 'css-loader' ] },
+
+			{ test: /\.(html|njk)$/i, use: [ 
+				{
+					loader: 'simple-nunjucks-loader',
+					options: {
+						searchPaths: src(),
+						assetsPaths: [
+							'static'
+						],
+						dev: process.env.NODE_ENV === "development"
+					}
+				}
+			]}
 		]
 	},
 
