@@ -26,7 +26,7 @@ module.exports = {
 
 	module: {
 		rules: [
-			{ test: /\.(png|tiff|jpe?g|svg|gif|webp)$/i,
+			{ test: /\.(png|tiff|jpe?g|svg|gif|webp|ico)$/i,
 				type: 'asset/resource',
 				generator: {
 					filename: 'static/img/[name]-[hash:8][ext]'
