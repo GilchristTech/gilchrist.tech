@@ -91,7 +91,7 @@
 
 .scroll-indicator {
     position: absolute;
-    bottom: 0em;
+    bottom: 5em;
     left: 50%;
 
     border: 1em solid transparent;
