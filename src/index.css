@@ -5,9 +5,9 @@
 
 .showcase {
     background: #080808;
-    background: url(../static/splack-background.svg) no-repeat;
+    background: url(../static/background-landing.jpg) no-repeat;
     background-size: cover;
-    background-position: bottom right;
+    background-attachment: fixed;
     width:      100%;
     min-height: 85vh;
 	
@@ -26,6 +26,17 @@
         [title-start clock-start]
         1fr [clock-end info-start]
         1fr [info-end title-end];
+}
+
+.showcase * {
+    z-index: 1;
+}
+
+.showcase::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background: #000b;
 }
 
 .showcase section ul {
