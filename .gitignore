@@ -1,6 +1,5 @@
 .*.swp
 .swp
 tags
-package-lock.json
 node_modules
 dist

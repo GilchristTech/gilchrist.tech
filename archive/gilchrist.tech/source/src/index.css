@@ -1,0 +1,397 @@
+:root {
+    --portfolio-item-gradient-top: #2228;
+    --portfolio-item-gradient-bottom: #000c;
+}
+
+.showcase {
+    background: #080808;
+    background: 
+        linear-gradient(#000b, #000b),
+        url(../static/background-landing.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width:      100%;
+    min-height: 85vh;
+	
+    color:      white;
+    padding:    2rem;
+    box-sizing: border-box;
+    display: grid;
+    z-index: -100;
+
+    grid-template-rows:
+        [title-start clock-start]
+        min-content [title-end info-start]
+        1fr [clock-end info-end];
+
+    grid-template-columns:
+        [title-start clock-start]
+        1fr [clock-end info-start]
+        1fr [info-end title-end];
+}
+
+.showcase * {
+    z-index: 1;
+}
+
+.showcase section ul {
+    direction: rtl;
+    margin-right: 3rem;
+    list-style-type: none;
+}
+
+
+.title-info h1,h2 {
+    margin: 0;
+}
+
+.title-info h2 {
+    font-size: 1em;
+}
+
+.showcase section ul li * {
+    direction: ltr;
+}
+
+.showcase li::before {
+    content: "♦ ";
+    margin-left: 1rem;
+
+    /*
+        On Android Chrome, the Unicode diamonds are replaced with a colored
+        emoji. Turn it into a silhouette.
+    */
+
+    color: transparent;
+    text-shadow: 0 0 #fff;
+}
+
+.clock {
+    background: url(../static/clock.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.showcase .title-info {
+    text-align: center;
+    grid-area: title;
+    z-index: 1;
+}
+
+.title-info h1 , header > h1 {
+    font-display: block;
+    font-family: "Lobster Two";
+}
+
+.showcase > .clock    { grid-area: clock; place-self: normal; }
+.showcase > .services { grid-area: info; }
+
+.showcase section h1 {
+    /* text-align: right; */
+    justify-content: flex-end;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 5em;
+    left: 50%;
+
+    border: 1em solid transparent;
+    border-top: 1em solid #ff4;
+    animation: scroll-indicator-bounce 4s linear infinite;
+    z-index: 101;
+}
+
+@keyframes scroll-indicator-bounce {
+    from, 10%, 20%, 30%, to { transform: translate(-50%, -125%); }
+    15%, 25%                { transform: translate(-50%, -100%); }
+}
+
+h1.embelish {
+    width: 100%;
+    text-align:      center;
+    display:         flex;
+    flex-direction:  row;
+    justify-content: center;
+    align-items:     center;
+    gap:             12px;
+    font-family: "Cormorant SC";
+}
+
+img.embelish {
+    width:          15vmin;
+    min-width:      3rem;
+    display:        inline-block;
+    line-height:    2em;
+    vertical-align: middle;
+}
+
+img.embelish.right {
+    transform: scaleX(-1);
+}
+
+.portfolio-item {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    
+    padding: 4rem;
+
+    background: linear-gradient(to bottom,
+        var(--navbar-glow) calc(4rem - 4px),
+        var(--navbar-glow),
+        var(--portfolio-item-gradient-top) calc(4rem + 4px),
+        var(--portfolio-item-gradient-bottom)); 
+
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+
+    text-shadow: 1px 1px 5px black;
+    overflow-x: hidden;
+
+    display: grid;
+    place-items: center;
+}
+
+.portfolio-item >  header   {
+    grid-area: header;
+    margin-bottom: 0.75em;
+}
+
+.portfolio-item > section   { grid-area: description; }
+
+.portfolio-item .pictures-cascade {
+    grid-area: pictures;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: start;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.portfolio-item .pictures-cascade > img {
+    height: 30vh;
+
+    object-fit: contain;
+    border: 2px #888 solid;
+    border-radius: 2px;
+    box-shadow: 2px 2px 3px 1px #4448;
+}
+
+.portfolio-item .pictures-cascade > img + img {
+    margin-top: -10%;
+}
+
+.portfolio-item .summary {
+    max-width: 300px;
+}
+
+.portfolio-item::before {
+    content: "";
+    position: absolute;
+    top: 95%; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to bottom, #0000, #ffff);
+    z-index: -1;
+}
+
+picture.background {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+picture.background img {
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.portfolio-item h1,h2 {
+    margin: 0;
+}
+
+.portfolio-item h2 {
+    font-size: 1em;
+    color: #ccc;
+}
+
+.portfolio-item p {
+    text-indent: 1rem;
+}
+
+.section-header {
+    width: 100%;
+    background: black;
+}
+
+.section-header > h1.embelish {
+    margin: 0;
+}
+
+section > h1 {
+    text-align:      center;
+    display:         flex;
+    flex-direction:  row;
+    justify-content: center;
+    align-items:     center;
+    gap:             12px;
+    font-family: "Cormorant SC";
+}
+
+
+section#portfolio {
+    background: #11000088;
+    padding-bottom: 3em;
+}
+
+section.about-me {
+    background: linear-gradient(335deg, rgba(1,0,5,1) 0%, rgba(5,5,10,1) 83%);
+    padding: 2em 25%;
+    padding-bottom: 3em;
+
+    min-height: 80vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.about-me .section-header {
+    background-color: transparent;
+}
+
+section.about-me p {
+    max-width: 400px;
+}
+
+@media(max-width: 319px) {
+    section > h1 > * {
+        margin: 0;
+    }
+
+    section .embelish {
+        height: 2em;
+    }
+
+    section.about-me {
+        padding: 1rem;
+    }
+
+    header > h1 {
+        display: none;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .scroll-indicator {
+        display: none;
+    }
+
+    .portfolio-item {
+        background: linear-gradient(to bottom,
+            var(--portfolio-item-gradient-top) calc(4rem + 4px),
+            var(--portfolio-item-gradient-bottom));
+    }
+
+    section.about-me {
+        padding-left:  5%;
+        padding-right: 5%;
+    }
+}
+
+
+@media(max-width: 768px) {
+    .showcase {
+        padding: 2rem 0 0 0;
+
+        place-items: center;
+
+        grid-template-rows:
+            [title-start clock-start]
+            2em  [title-end]
+            30vh [info-start]
+            10vh [clock-end]
+            1fr [info-end];
+
+        grid-template-columns:
+            [title-start clock-start info-start] 1fr;
+    }
+
+    .showcase section ul {
+        margin: 0;
+        direction: unset;
+        margin: unset;
+        padding: unset;
+    }
+
+    .showcase section h1 {
+        text-align: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .portfolio-item {
+        padding: 1em;
+    }
+
+    div.portfolio-item {
+         padding: 1em;
+         text-align: left;
+
+         grid-template-rows:
+            [header] auto [pictures] auto [description] auto;
+
+         grid-template-columns:
+            [header description pictures] 100%;
+    }
+
+    /*
+       Turn the pictures cascade into a carosel
+    */
+
+    .portfolio-item .pictures-cascade {
+    	display: flex;
+    	flex-flow: column wrap;
+    	overflow-x: scroll;
+    	height: 30vh;
+        width: auto;
+    	scroll-behavior: smooth;
+    	scroll-snap-type: x mandatory;
+    	gap: 25vw;
+    	border-radius: 4px;
+    	scrollbar-width: none;
+    }
+    
+    .portfolio-item .pictures-cascade > img {
+    	animation: none !important;
+    	margin: 0;
+    	margin-top: 0;
+    	height: 100%;
+    	width: 100%;
+    	scroll-snap-align: start;
+    	border: none;
+    	box-shadow: none;
+    }
+}
+
+.portfolio-item {
+    grid-template-columns: [pictures] 1fr [header description] 1fr;
+
+    grid-template-rows:
+        [header-start pictures-start]
+        min-content [header-end description-start]
+        1fr [description-end pictures-end];
+
+    text-align: right;
+}

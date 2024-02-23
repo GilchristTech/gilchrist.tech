@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC&family=Lobster+Two&family=Open+Sans&display=swap');
+
+:root {
+    --navbar-glow: #000;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background: #222;
+    color: #eee;
+    width: 100%;
+    font-family: Open Sans;
+    box-sizing: border-box;
+}
+
+body > * {
+    max-width: 100%;
+}
+
+body > header {
+    position: sticky;
+    top: 0;
+    height: 4rem;
+    background: #000;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2em;
+    align-items: center;
+}
+
+body > header h1 { margin: 0; }
+
+nav ul li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+body > footer {
+    background: #222;
+    color:      #888;
+    /* margin-top:  3em; */
+    padding:     2em;
+}
+
+body > footer a {
+    text-decoration: none;
+}
+
+a {
+    color: #cf4;
+    font-weight: bold;
+}
+
+a:visited {
+    color: #be4;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ff8;
+    font-weight: bold;
+}
+
+a.button {
+    display: inline-block;
+    background: linear-gradient(to bottom, #ccf, #4cf 3px, #44f);
+    border-radius: 3px;
+    outline: 2px solid #ccf;
+    outline-offset: -6px;
+    padding: 1.25em;
+    text-decoration: none;
+    color: white;
+    box-shadow: 1px 2px 2px 2px #4448;
+}
+
+@media(max-width: 319px) {
+    body > header > h1 {
+        display: none;
+    }
+}
+
+@media(max-width: 500px) {
+    body >header {
+        padding: 0 8px;
+        position: static;
+        height: auto;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media(max-width: 768px) {
+    nav ul {
+        text-align: right;
+        margin-right: 8px;
+    }
+
+    nav ul li {
+        display: inline-block;
+    }
+}
