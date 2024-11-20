@@ -41,6 +41,9 @@ main > section + section {
     margin-top: 15dvh;
     border-top: 1px solid #8882;
   }
+  @media (min-height: 1500px) {
+    margin-top: 8em;
+  }
 }
 
 #other-projects {
