@@ -156,12 +156,17 @@ nav ul {
   padding: 0;
 }
 
-#site-footer nav h3 {
-  margin-top: 0.65em;
-}
-
 #site-footer nav {
   direction: rtl;
+}
+
+#site-footer nav li {
+  margin-top: 0.36em;
+  font-size: 1.05em;
+}
+
+#site-footer nav h3 {
+  margin-top: 0.65em;
 }
 
 #site-footer nav a {

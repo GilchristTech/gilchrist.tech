@@ -2,6 +2,7 @@
 title:  Home
 layout: base.njk
 head: >
+  <meta name="description" content="Gilchrist Pitts – Developer and illustrator of twenty years. Creator of Interbuilder, Hefoki, and other software.">
   <link rel="stylesheet" href="index.css">
 ---
 
@@ -12,7 +13,7 @@ head: >
   </h1>
 
   <div class="slider">
-    <img class="ink" src="/static/exhausted.webp" alt="Me, after an Inktober">
+    <img class="ink" src="/static/inktober-exhausted.webp" alt="Inktober Prompt: Exhausted. Depicted: me after Inktober">
   </div>
 
   {#- Fetch a short about-me blurb from the About page's frontmatter -#}
@@ -21,7 +22,7 @@ head: >
   ) | assertString | indent | trimRight | safe }}
 
   <p style="text-align: center">
-    <a class="button read-more" href="/about" class="button read-more">Read more</a>
+    <a class="button read-more" href="/about" class="button read-more">About</a>
   </p>
 </section>
 
@@ -32,7 +33,7 @@ head: >
   </h2>
 
   <div class="slider">
-    <img class="ink" src="/static/dizzy.webp">
+    <img class="ink" src="/static/inktober-dizzy.webp" alt="Inktober prompt: Dizzy">
   </div>
 
   <a  class="github button ink"
@@ -47,7 +48,7 @@ head: >
     "all[?@.inputPath == './src/interbuilder.njk'].data | [0].shortHtml"
   ) | assertString | indent | trimRight | safe }}
 
-  <p style="text-align: center"><a href="/interbuilder" class="button read-more">Read more</a></p>
+  <p style="text-align: center"><a href="/interbuilder" class="button read-more">More about Interbuilder</a></p>
 </section>
 
 <section id="other-projects" class="vertical-split" style="--split-width:60%">
@@ -56,7 +57,7 @@ head: >
   </h2>
 
   <div class="slider">
-    <img class="ink" src="/static/inktober-freeze.webp">
+    <img class="ink" src="/static/inktober-freeze.webp" alt="Inktober prompt: Freeze">
   </div>
 
   <ul>
@@ -69,9 +70,9 @@ head: >
       {{-"\n\n"}}{{- hefoki.shortHtml | assertString | indent(6) | trimRight | safe }}
 
       <nav style="display: flex; flex-flow: row wrap; align-items: center">
-        <a href="/hefoki" class="button read-more">Read more</a>
+        <a href="/hefoki" class="button read-more">More about Hefoki</a>
 
-        <a class="github button ink" href="{{ repo }}" target="_blank">
+        <a class="github button ink" href="{{ hefoki.repository }}" target="_blank">
           <img src="/static/github-mark.svg" alt="GitHub logo">GitHub repo
         </a>
       </nav>
