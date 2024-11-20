@@ -19,6 +19,8 @@ body > main { flex-grow: 1 }
   padding: 8px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px 1em;
   justify-content: space-between;
 
   font-family: monospace;
@@ -201,4 +203,25 @@ a.github.button img {
   margin-right: 0.35em;
   height: 4em;
   width:  4em;
+}
+
+
+/*
+  The ink class is for high-contrast greyscale images with no
+  transparency, indented for ink illustrations.
+
+  On a white background. The image will adopt the background as
+  though the white were transparent, and black pixels will be
+  the inverse of the background. This allows suitable images to
+  work in any color scheme.
+
+  If not all the necessary CSS is supported, it doesn't try
+  anything fancy, falling back to boring, normally-styled
+  elements instead.
+*/
+@supports ((filter: invert()) and (mix-blend-mode: difference)) {
+  img.ink {
+    filter: invert();
+    mix-blend-mode: difference;
+  }
 }

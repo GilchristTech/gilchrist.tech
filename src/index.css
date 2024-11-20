@@ -36,8 +36,11 @@ main > section {
 }
 
 main > section + section {
-  margin-top: 15dvh;
-  border-top: 1px solid #8882;
+  border-top: 1px solid #888;
+  @media (min-width: 600px) {
+    margin-top: 15dvh;
+    border-top: 1px solid #8882;
+  }
 }
 
 #other-projects {
@@ -51,7 +54,10 @@ main > section + section {
     padding: 0;
 
     li {
-      margin:  1em;
+      margin-top: 1em;
+      @media (min-width: 400px) {
+        margin:  1em;
+      }
       padding: 1em;
       border:  1px solid #8888;
     }
@@ -115,26 +121,5 @@ section#posts {
       min-width: min(100%, 200px);
       justify-items: center;
     }
-  }
-}
-
-
-/*
-  The ink class is for high-contrast greyscale images with no
-  transparency, indented for ink illustrations.
-
-  On a white background. The image will adopt the background as
-  though the white were transparent, and black pixels will be
-  the inverse of the background. This allows suitable images to
-  work in any color scheme.
-
-  If not all the necessary CSS is supported, it doesn't try
-  anything fancy, falling back to boring, normally-styled
-  elements instead.
-*/
-@supports ((filter: invert()) and (mix-blend-mode: difference)) {
-  img.ink {
-    filter: invert();
-    mix-blend-mode: difference;
   }
 }

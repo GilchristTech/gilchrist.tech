@@ -45,7 +45,9 @@ export default async function (config) {
   });
 
   return {
-    defaultRenderingEngine: "liquid",
+    htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
+
     dir: {
       input: "src",
       output: "dist",
