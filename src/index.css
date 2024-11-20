@@ -1,0 +1,140 @@
+main h1 span {
+  display: block;
+}
+
+main :is(h1, h2, h3) {
+  color: black;
+  font-weight: normal;
+  border-bottom: 1px solid #8888;
+  padding: 8px;
+}
+
+main h1 {
+  border-left: 4px solid #888;
+}
+
+main h2 {
+  font-size: 1.2
+}
+
+main :is(h1,h2,h3) .title {
+  font-size: 1.2em; /* Proably 1.44rem */
+}
+
+main :is(h1,h2,h3) .subtitle {
+  display: block;
+  font-size: 0.65em;
+  font-style: italic;
+}
+
+main > section {
+  margin: 0 auto;
+
+  @media (max-height: 1500px) {
+    min-height: 75dvh;
+  }
+}
+
+main > section + section {
+  margin-top: 15dvh;
+  border-top: 1px solid #8882;
+}
+
+#other-projects {
+  h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin:  1em;
+      padding: 1em;
+      border:  1px solid #8888;
+    }
+  }
+
+  .button {
+    display: inline-flex;
+    justify-self: baseline;
+    width: auto;
+  }
+  .button.github {
+    font-size: 0.85em;
+    width: auto;
+    justify-self: baseline;
+  }
+}
+
+
+#other-projects h2 {
+  text-align: left;
+  @media (min-width: 750px) {
+    text-align: center;
+  }
+  @media (min-width: 1200px) {
+    border: none;
+  }
+}
+
+
+section#posts {
+  min-height: auto; /* Unset page default value for sections */
+  padding:    2em;
+  max-width:  600px;
+  margin:     0 auto;
+
+  & > ul > li > a {
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    padding: 0;
+
+    li {
+      h3 {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+      p {
+        margin: 0;
+        margin-top: 4px;
+        & + p { margin-top: 8px }
+      }
+
+      border: 1px solid #8888;
+      margin: 1em;
+      padding: 1em;
+      min-width: min(100%, 200px);
+      justify-items: center;
+    }
+  }
+}
+
+
+/*
+  The ink class is for high-contrast greyscale images with no
+  transparency, indented for ink illustrations.
+
+  On a white background. The image will adopt the background as
+  though the white were transparent, and black pixels will be
+  the inverse of the background. This allows suitable images to
+  work in any color scheme.
+
+  If not all the necessary CSS is supported, it doesn't try
+  anything fancy, falling back to boring, normally-styled
+  elements instead.
+*/
+@supports ((filter: invert()) and (mix-blend-mode: difference)) {
+  img.ink {
+    filter: invert();
+    mix-blend-mode: difference;
+  }
+}

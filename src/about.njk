@@ -1,0 +1,65 @@
+---
+title:  About
+layout: base.njk
+
+head: >
+  <link rel="stylesheet" href="/index.css">
+
+shortHtml: |
+  <p>At eleven years old, I started programming games in BASIC. For
+  most of the time since, I've been an exclusive Linux user, and
+  have created spanning full-stack web development, web
+  crawling, AWS infrastructure automation, game development with
+  C and SDL2, static websites for small business, price
+  comparisons of mutual fund price histories, cross-compiling
+  software for a 2009 Kindle, and my own web build tooling.
+  </p>
+
+  <p>I'm also an ink illustrator, and have worked on a
+  <a href="https://spacehouse.co">webcomic</a>, and finished
+  three Inktobers.
+  </p>
+---
+
+<section id="intro" class="vertical-split" style="--split-width: 50%">
+  <h1>
+    <span class="title">About</span>
+  </h1>
+
+  <div class="slider">
+    <img class="ink" src="/static/exhausted.webp" alt="Me, after an Inktober">
+  </div>
+
+  {{-"\n\n"-}}
+  {{ shortHtml | assertString | trim | indent | safe }}
+
+  <h2>
+    Programming languages and Technologies
+  </h2>
+
+  <p>My current preferred language is Go, but I also work
+  frequently in Javascript. Python is my go-to data-science
+  language, and I have a recent project in Perl. My favorite
+  language I don't use is Forth.
+  </p>
+
+  <p>As I build projects, I to deploy them to AWS, but believe
+  that software should be modular enough to where specific
+  infrastructure dependencies or configurations are optional.
+  </p>
+
+  <p>Vim is my preferred text editor (I haven't yet made the
+  switch to Neovim). I use Linux exclusively, to the point that I
+  find Windows and OSX confusing from disuse. My distro is a very
+  boring Arch Linux setup with Openbox and tint2.
+  </p>
+
+  <h2>Illustration</h2>
+
+  <p>Outside of computers, another personal interest of mine is
+  illustration, although I have not been as active in this over
+  the last couple years. Luckily, it only takes a couple hours of
+  timed gesture drawings to get back into the swing of
+  things!
+  </p>
+</section>

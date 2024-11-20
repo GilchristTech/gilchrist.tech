@@ -1,0 +1,83 @@
+---
+title:  Interbuilder
+layout: base.njk
+tags:   ["projects", "portfolio"]
+
+repository: "https://github.com/GilchristTech/interbuilder"
+
+head: >
+  <link rel="stylesheet" href="/index.css">
+
+shortHtml: |
+  <p>Interbuilder is a workflow and build tool for static web
+  assets and the programs which generate them. It runs multiple
+  programs which write a directory of files, (such as static site
+  generators), and sends them through a data pipeline to make
+  changes to their file trees. If the URL for a static asset is
+  changed, other pages are updated to point to the new value.
+  </p>
+---
+
+{#-
+  What is a workflow, build tool, static web assets, etc.?
+-#}
+
+<section class="vertical-split" style="--split-width:45%">
+  <h1>
+    <span class="title"   >Interbuilder</span>
+    <span class="subtitle">Declarative Build Pipelining</span>
+  </h1>
+
+  <div class="slider">
+    <img class="ink" src="/static/dizzy.webp">
+  </div>
+
+  <a class="github button ink" href="{{ repo }}" target="_blank">
+    <img src="/static/github-mark.svg" alt="GitHub logo">GitHub repo
+  </a>
+
+  {{-"\n\n"-}}
+  {{ shortHtml | indent | trimRight | safe }}
+
+  <h2>
+    Rationale
+  </h2>
+
+  <p>I've long had an interest in
+  <a href="https://jamstack.org/" target="_blank"> Jamstack</a>,
+  but find it has a limitation: it incentivizes more monolithic
+  codebases on the front-end, which in-turn requires more
+  complicated, less interoperable build tooling and source code.
+  </p>
+
+  <p>In the end, almost everything on the web compiles into
+  atomic building blocks like HTML, JavaScript, and CSS; and
+  as long as any URLs written within these standardized formats
+  point to the correct places, they will be understood by
+  browsers.
+  </p>
+
+  <p>Interbuilder attempts to re-frame build tools back into this
+  concept, transforming static assets instead of source code,
+  by setting up pipelines to run build processes, collect
+  their static output, manipulate that content directly, and
+  combine these sets of files with the output from other
+  processes which generate assets.
+  </p>
+
+  <p>Modern tools shy away from modifying these formats directly,
+  usually opting to generate static assets instead of modifying
+  existing ones. Interbuilder is an exploration of an
+  alternative, providing the means to manipulate their generated
+  content as-is, instead of the origin source code.
+  </p>
+
+  <p>For more complicated use cases, such as incremental
+  deployment, I am indending to explore sytems to resolve URL
+  collisions, collecting lists of assets from existing
+  deployment, such as on an S3 bucket, automated source code
+  mutation, and a deployable plugin system to generate executable
+  binaries for production settings.
+  </p>
+
+</section>

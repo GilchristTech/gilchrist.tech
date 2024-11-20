@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title+" - " if title }}dev.gilchrist.tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/common.css">
+  {{-"\n"-}}
+  {%- if head -%}
+    {{ head | assertString | indent | trimRight | safe }}
+  {% endif -%}
+</head>
+<body>
+  <header id="site-header">
+    <a class="brand" href="/">dev.gilchrist.tech/</a>
+    <nav>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    {%- if content -%}
+      {{-"\n"-}}
+      {{ content | assertString | trim | indent(4) | safe }}
+      {{-"\n  "}}
+    {%- endif -%}
+  </main>
+
+  <footer id="site-footer">
+    <div class="copyright">
+      <p>&copy;2024 &mdash;&nbsp;Gilchrist Pitts</p>
+      <p>All rights reserved.</p>
+    </div>
+
+    <nav id="site-footer-projects">
+      <h2>Navigation</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+
+        <li>
+          <h3>Projects</h3>
+          <ul>
+          {%- for project in collections.projects %}
+            <li><a href="{{ project.url }}">{{ project.data.title }}</a></li>
+          {%- endfor %}
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+</html >

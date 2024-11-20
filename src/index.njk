@@ -1,0 +1,157 @@
+---
+title:  Home
+layout: base.njk
+head: >
+  <link rel="stylesheet" href="index.css">
+---
+
+<section id="intro" class="vertical-split">
+  <h1>
+    <span class="title">Gilchrist Pitts</span>
+    <span class="subtitle">Twenty years of self-directed software development</span>
+  </h1>
+
+  <div class="slider">
+    <img class="ink" src="/static/exhausted.webp" alt="Me, after an Inktober">
+  </div>
+
+  {#- Fetch a short about-me blurb from the About page's frontmatter -#}
+  {{-"\n\n"}}{{- collections | search(
+    "all[?@.inputPath == './src/about.njk'].data | [0].shortHtml"
+  ) | assertString | indent | trimRight | safe }}
+
+  <p style="text-align: center">
+    <a class="button read-more" href="/about" class="button read-more">Read more</a>
+  </p>
+</section>
+
+<section id="current-project" class="vertical-split right" style="--split-width: 45%;">
+  <h2>
+    <span class="title">Current Project: Interbuilder</span>
+    <span class="subtitle">Automating static web workflows</span>
+  </h2>
+
+  <div class="slider">
+    <img class="ink" src="/static/dizzy.webp">
+  </div>
+
+  <a  class="github button ink"
+      href="https://github.com/GilchristTech/interbuilder"
+      target="_blank"
+  >
+    <img src="/static/github-mark.svg" alt="GitHub logo">GitHub repo
+  </a>
+
+  {#- Fetch a summary about Interbuilder from its page's frontmatter -#}
+  {{-"\n\n"}}{{- collections | search(
+    "all[?@.inputPath == './src/interbuilder.njk'].data | [0].shortHtml"
+  ) | assertString | indent | trimRight | safe }}
+
+  <p style="text-align: center"><a href="/interbuilder" class="button read-more">Read more</a></p>
+</section>
+
+<section id="other-projects" class="vertical-split" style="--split-width:60%">
+  <h2>
+    Other Projects
+  </h2>
+
+  <div class="slider">
+    <img class="ink" src="/static/inktober-freeze.webp">
+  </div>
+
+  <ul>
+    <li id="hefoki">
+      <h3>Hefoki</h3>
+      {#- Fetch a summary about Hefoki from its page's frontmatter -#}
+      {%- set hefoki = collections | search(
+        "all[?@.inputPath == './src/hefoki.njk'].data | [0]"
+      )-%}
+      {{-"\n\n"}}{{- hefoki.shortHtml | assertString | indent(6) | trimRight | safe }}
+
+      <nav style="display: flex; flex-flow: row wrap; align-items: center">
+        <a href="/hefoki" class="button read-more">Read more</a>
+
+        <a class="github button ink" href="{{ repo }}" target="_blank">
+          <img src="/static/github-mark.svg" alt="GitHub logo">GitHub repo
+        </a>
+      </nav>
+    </li>
+
+    <li id="flef" class="vertical-split" style="--split-width: auto; --split-min-width: 1000px">
+      <h3>Flef</h3>
+
+      <img
+        src="/static/flef-logo.svg"
+        class="right span vertical-center"
+        alt="Flef logo"
+        style="
+          max-width: 200px;
+          padding:    1em;
+          opacity:   0.5;
+        "
+      >
+
+      <p><code>flef</code> is a small convenience utility for
+      creating and navigating to single-day project directories
+      without needing to type dates in their names. Invoking
+      <code>flef</code> ensures the existence of a project
+      directory, named with the current date, and starts a shell
+      there; creating a clean environment and helping facilitate
+      a habit of daily coding.
+      </p>
+
+      <a  class="github button ink"
+          href="https://github.com/GilchristTech/flef"
+          target="_blank"
+      >
+        <img src="/static/github-mark.svg" alt="GitHub logo">GitHub repo
+      </a>
+
+    </li>
+
+    <li id="web-imposition">
+      <h3>Web Imposition</h3>
+      <p>Print booklets and zines at home! Web Imposition is a tool for taking
+      PDFs and scaling their pages down onto sheets which can be folded and
+      staple-bound.
+      </p>
+
+      <p>This process of cutting up the document and rearranging it
+      to be folded is called imposition, and unlike other online imposition
+      tools, Web Imposition works entirely in the browser without sending your
+      documents to a server.
+      </p>
+
+      <a  class="github button ink"
+          href="https://github.com/GilchristTech/flef"
+          target="_blank"
+      >
+        <img src="/static/github-mark.svg" alt="GitHub logo">GitHub repo
+      </a>
+    </li>
+  </ul>
+</section>
+ 
+{#
+<section id="posts">
+  <h2>Posts</h2>
+  <ul>{{"\n"-}}
+    {%- for post in collections.posts | reverse -%}
+      {{- 4 | indent -}}
+      <li>
+        {{-"\n      "-}}
+        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        <time>{{ post.data.publishDate | formatDate("yyyy-MM-dd") }}</time>
+        {%- if post.data.summary -%}
+          {{-"\n"-}}
+          {%- indent 6 -%}
+            <p>{{- post.data.summary -}}</p>
+          {%- endindent -%}
+        {%- endif -%}
+        {{-"\n    "-}}
+      </li>{{"\n"-}}
+    {%- endfor -%}
+    {{-""-}}
+  </ul>
+</section>
+#}

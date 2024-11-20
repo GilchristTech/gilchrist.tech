@@ -1,0 +1,204 @@
+*, *::before, *::after { box-sizing: inherit; min-width: 0 }
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 800px;
+  min-height: 100dh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  color: #111;
+  background: #fdfdfd;
+}
+
+body > main { flex-grow: 1 }
+
+#site-header {
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-family: monospace;
+  font-size: 1.45em;
+
+  border-bottom: 1px solid #8888;
+  margin: 1em;
+}
+
+#site-header .brand {
+  font-family: monospace;
+}
+
+#site-header a { text-decoration: none; }
+
+img {
+  max-width: 100%;
+
+  max-height:  600px;
+  max-height:  100vh;
+  max-height: 100dvh;
+}
+
+main {
+  /*
+    Main section design defaults. Other layouts should override
+    these properties if needed; but they are intended to be
+    inconsequential.
+  */
+  line-height: 1.6;
+  padding: 0 5dvmin;
+}
+
+nav ul {
+  padding-inline-start: 1em;
+}
+
+.vertical-split {
+  display: grid;
+  max-width: 1200px;
+
+  --split-width:     350px;
+
+  h1,h2,h3 {
+    @media (max-height: 1500px) {
+      margin-top: 15dvmin;
+    }
+  }
+
+  & img {
+    object-fit: contain;
+    object-position: center;
+    @media (max-width: 900px) {
+      max-height: 300px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+
+  @media (
+    (min-width: 900px) or
+    ((orientation: landscape) and (min-width: 750px)) 
+  ){
+    grid-template-columns: var(--split-width) auto;
+    grid-column-gap: 2em;
+    padding: 1em;
+    position: relative;
+
+    /*
+      Child elements can have these classes
+      to control their placement in the split layout.
+    */
+    & > .left  { grid-column: 1 }
+    & > .right { grid-column: 2 }
+    & > .span  { grid-row: 1 / span 9999 }
+    & > .span.vertical-center {
+      align-self: center;
+    }
+
+    /*
+      By default, place items in the left column,
+      unless this has the .right class
+    */
+    & > * { grid-column: 1; }
+
+    &.right {
+      & > * { grid-column: 2 }
+      & > .slider {
+        grid-column: 1;
+      }
+    }
+
+    & > .slider {
+      grid-column: 2;
+      grid-row: 1 / span 9999;
+
+      display: flex;
+      flex-direction: column;
+
+      & :first-child {
+        position: sticky;
+        top: 0%;
+        padding-top: 10dvh;
+        @media (min-height: 900px) {
+          padding-top: 15dvh;
+        }
+      }
+    }
+  }
+}
+
+
+#site-footer {
+  margin:      24px; padding:      24px;
+  margin:   2.5dmin; padding:   2.5dmin;
+  margin:  2.5dvmin; padding:  2.5dvmin;
+
+  min-height:            256px;
+  min-height: max(256px, 20vh);
+  min-height: max(256px,20dvh);
+
+  border-top:  1px solid #8888;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+#site-footer :is(h2,h3,h4) {
+  margin: 0;
+  padding: 0;
+}
+
+#site-footer nav h3 {
+  margin-top: 0.65em;
+}
+
+#site-footer nav {
+  direction: rtl;
+}
+
+#site-footer nav a {
+  text-decoration: none;
+}
+
+a.button {
+  display: inline-block;
+  
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background: white;
+
+  border:              1px solid #888c;
+  border-bottom-style: double;
+  border-bottom-width: 4px;
+
+  width:     auto;
+  position:  relative;
+  font-size: 1.25em;
+
+  margin-top:    1.0em;
+  margin-bottom: 1.0em;
+  padding: 0.15em 0.85em 0.15em 0.50em;
+}
+
+a.github.button {
+  border-left:   none;
+  margin-left:   3.5em;
+}
+
+a.github.button img {
+  z-index: 1;
+  margin: -1em 0;
+  margin-left:  -3.3em;
+  margin-right: 0.35em;
+  height: 4em;
+  width:  4em;
+}
