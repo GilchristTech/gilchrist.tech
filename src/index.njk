@@ -17,8 +17,8 @@ head: >
   </div>
 
   {#- Fetch a short about-me blurb from the About page's frontmatter -#}
-  {{-"\n\n"}}{{- collections | search(
-    "all[?@.inputPath == './src/about.njk'].data | [0].shortHtml"
+  {{-"\n\n"}}{{- collections.all | search(
+    "[?@.inputPath == './src/about.njk'].data | [0].shortHtml"
   ) | assertString | indent | trimRight | safe }}
 
   <p style="text-align: center">
@@ -131,14 +131,15 @@ head: >
       </a>
     </li>
   </ul>
-</section>
- 
-{#
+</section>{{"\n"-}}
+
+{%- if collections.posts.length -%}
+{{-"\n"-}}
 <section id="posts">
   <h2>Posts</h2>
-  <ul>{{"\n"-}}
-    {%- for post in collections.posts | reverse -%}
-      {{- 4 | indent -}}
+  <ul>
+    {%- for post in collections.posts -%}
+      {{-"\n"}}{{- 4 | indent -}}
       <li>
         {{-"\n      "-}}
         <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
@@ -150,9 +151,8 @@ head: >
           {%- endindent -%}
         {%- endif -%}
         {{-"\n    "-}}
-      </li>{{"\n"-}}
-    {%- endfor -%}
-    {{-""-}}
+      </li>
+    {%- endfor %}
   </ul>
-</section>
-#}
+</section>{{"\n"-}}
+{%- endif -%}

@@ -1,0 +1,22 @@
+---
+layout: base.njk
+eleventyComputed:
+  head: |
+    <link rel="stylesheet" href="/posts/article.css">{{"\n"-}}
+    {% if head %}{{ head | safe }}{% endif %}
+---
+
+<article>
+  <header>
+    <h1>
+      <span class="title">{{ title }}</span>
+      {%- if subtitle -%}
+        {{ 6 | indent -}}
+        <span class="subtitle">{{ subtitle }}</span>{{"\n"-}}
+      {%- endif -%}
+    </h1>
+    <time>{{ publishDate | formatDate("yyyy-MM-dd") }}</time>
+  </header>
+
+  {{"\n"}}{{- content | indent | safe }}
+</article>

@@ -100,7 +100,6 @@ nav ul {
 
   @media (
     (min-width: 900px) or
-    (min-device-width: 768px) or
     ((orientation: landscape) and (min-width: 750px)) 
   ){
     grid-template-columns: var(--split-width) auto;
@@ -236,6 +235,19 @@ a.github.button img {
   margin-right: 0.35em;
   height: 4em;
   width:  4em;
+}
+
+
+main :is(h1,h2,h3) .title {
+  font-size: 1.2em; /* Proably 1.44rem */
+}
+
+
+main :is(h1,h2,h3) .subtitle {
+  display: block;
+  font-size: 0.65em;
+  font-style: italic;
+  font-weight: normal;
 }
 
 

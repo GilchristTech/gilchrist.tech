@@ -17,16 +17,6 @@ main h2 {
   font-size: 1.2
 }
 
-main :is(h1,h2,h3) .title {
-  font-size: 1.2em; /* Proably 1.44rem */
-}
-
-main :is(h1,h2,h3) .subtitle {
-  display: block;
-  font-size: 0.65em;
-  font-style: italic;
-}
-
 main > section {
   margin: 0 auto;
 

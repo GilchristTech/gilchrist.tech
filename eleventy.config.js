@@ -6,6 +6,8 @@ function indent (text, width=2) {
     return " ".repeat(arguments[0]);
   }
 
+  assertString(text);
+
   const align = " ".repeat(width);
   return text
     .split("\n")
@@ -15,6 +17,13 @@ function indent (text, width=2) {
 
 
 function assertString(str) {
+  if (arguments.length > 1) {
+    for (let argument of arguments) {
+      assertString(argument);
+    }
+    return;
+  }
+
   if (typeof str === "string" || str instanceof String) {
     return str;
   }
@@ -25,6 +34,10 @@ function assertString(str) {
 export default async function (config) {
   config.addPassthroughCopy("src/**/*.css");
   config.addPassthroughCopy("static");
+
+  config.addPassthroughCopy("src/posts/**/*.(jpg|png|webp|svg)");
+  config.addPassthroughCopy("src/posts/**/static");
+  config.addWatchTarget("src/posts/**/*");
 
   config.addFilter("search", (await import("jmespath")).search);
 
@@ -40,8 +53,8 @@ export default async function (config) {
 
   config.addFilter("assertString", assertString);
 
-  config.addFilter("formatDate", (date, format) => {
-    return DateTime.fromJSDate(date).plus({seconds: 2}).toFormat(format);
+  config.addFilter("formatDate", (date, format, zone="UTC") => {
+    return DateTime.fromJSDate(date, {zone}).toFormat(format);
   });
 
   return {
