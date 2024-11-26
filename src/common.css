@@ -94,14 +94,18 @@ nav ul {
     @media (max-width: 900px) {
       width: 100%;
       margin: 0 auto;
+      max-height: 50dvh;
     }
   }
-
 
   @media (
     (min-width: 900px) or
     ((orientation: landscape) and (min-width: 750px)) 
   ){
+    & img {
+      max-width: 100dvh;
+    }
+
     grid-template-columns: var(--split-width) auto;
     grid-column-gap: 2em;
     @media (max-width: 1000px) {
