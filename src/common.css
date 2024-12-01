@@ -274,3 +274,45 @@ main :is(h1,h2,h3) .subtitle {
     mix-blend-mode: difference;
   }
 }
+
+@media print {
+  body {
+    line-height: 0.98;
+    font-size: 0.95em;
+  }
+
+  #site-header nav { display: none !important }
+
+  #site-footer {
+    border-top: 0.25mm solid black;
+    font-size: 0.8em;
+    padding: 0.5em;
+    nav { display: none !important }
+    break-before: avoid;
+  }
+
+  main *:where(h1, h2, h3, h4, h5, h6) {
+    break-after: avoid;
+  }
+
+  main *:where(h1, h2, h3, h4, h5, h6) + p {
+    break-before: avoid;
+  }
+
+  main h2 {
+    break-before: page;
+  }
+
+  ul {
+    break-before: avoid;
+    break-inside: avoid;
+  }
+
+  li, p {
+    break-inside: avoid;
+  }
+
+  .only-screen {
+    display: none !important;
+  }
+}
