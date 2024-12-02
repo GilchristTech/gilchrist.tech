@@ -9,6 +9,7 @@
   "author": "Gilchrist Pitts",
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "cheerio": "^1.0.0",
     "jmespath": "^0.16.0",
     "luxon": "^3.5.0"

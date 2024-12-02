@@ -3,6 +3,7 @@ layout: base.njk
 eleventyComputed:
   head: |
     <link rel="stylesheet" href="/posts/article.css">{{"\n"-}}
+    <link rel="stylesheet" href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"/>
     {% if head %}{{ head | safe }}{% endif %}
 ---
 

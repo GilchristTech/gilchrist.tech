@@ -105,6 +105,10 @@ export default async function (config) {
 
   config.addFilter("search", (await import("jmespath")).search);
 
+  config.addPlugin(
+    (await import("@11ty/eleventy-plugin-syntaxhighlight")).default
+  );
+
   //
   // String operation filters
   //
