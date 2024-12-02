@@ -25,7 +25,7 @@
   <main{% if mainClass %} class="{{ mainClass }}"{% endif %}>
     {%- if content -%}
       {{-"\n"-}}
-      {{ content | assertString | trim | indent(4) | safe }}
+      {{ content | assertString | trim | indentHtml(4) | safe }}
       {{-"\n  "}}
     {%- endif -%}
   </main>
