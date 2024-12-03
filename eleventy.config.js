@@ -23,51 +23,40 @@ function indentHtml (text, width=2) {
   const $ = Cheerio.load(text, null, false);
   const align = " ".repeat(width);
 
-  let result_text = align;
-  let pre_tag_level = 0;
+  // Recurse into the document node tree, and apply indentation
+  // to text nodes.
+  //
+  // I have looked at multiple HTML tokenizers and parsers, and
+  // found few options to preserve whitespace inside opening
+  // tags. If an attribute has two spaces or a newline instead
+  // of a single space, virtually every project I looked at
+  // rewrites this as a single space. For parsers, this makes
+  // sense, as whitespace outside of text nodes is not part of
+  // the DOM; but it could be more suitable to have a separate
+  // token for intra-tag whitespace. However, few
+  // recently-updated options for NPM modules with this
+  // functionality.
+  //
+  // Not wanting to build my own HTML tokenizer, to perform
+  // this indentation transformation, I accept that the
+  // whitespace around tag attributes will be truncated, and am
+  // mutating the document tree in-place.
 
-  function format (node) {
+  function format (node, pre_tag_level=0) {
     $(node).contents().each((_, element) => {
-      if (element.type === "text") {
-        let element_text = element.data;
-        if (pre_tag_level < 1) {
-          element_text = element_text.replaceAll("\n", "\n"+align);
+      if (element.type === "tag") {
+        // Because any <pre> ancestor invalidates additional
+        // indentation of its children, do not recurse if a <pre>
+        // tag is encountered.
+        //
+        if (element.name != "pre") {
+          format(element, pre_tag_level);
         }
-        result_text += element_text;
         return;
       }
-      else if (element.type === "tag") {
-        // Rebuild opening tag
-        //
-        // I have looked at multiple HTML tokenizers and parsers,
-        // and found no reasonable NPM modules for this which can
-        // preserve whitespace inside opening tags. If an
-        // attribute has two spaces or a newline instead of a
-        // single space, virtually every project I looked at
-        // rewrites this as a single space. It's dissapointing,
-        // but not wanting to build my own tokenizer or parser
-        // for whitespace management in my own HTML, I must
-        // accept that the whitespace around tag attributes will
-        // be trimmed.
-        //
-        result_text += `<${element.name}`;
-        for (let [key, value] of Object.entries(element.attribs)) {
-          result_text += ` ${key}="${value}"`;
-        }
-        result_text += ">";
-
-        if (element.name == "pre") {
-          pre_tag_level++;
-          format(element);
-          pre_tag_level--;
-        } else {
-          format(element);
-        }
-        result_text += `</${element.name}>`;
-        return;
-
-      } else if (element.type == "style") {
-        result_text += $.html(element).replaceAll("\n", "\n"+align);
+      else if (element.type === "text") {
+        // Indent text nodes
+        element.data = element.data.replaceAll("\n", "\n"+align);
         return;
       }
 
@@ -76,7 +65,7 @@ function indentHtml (text, width=2) {
   }
 
   format($.root());
-  return result_text;
+  return align + $.html();
 }
 
 

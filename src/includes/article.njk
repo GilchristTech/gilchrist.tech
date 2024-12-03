@@ -12,9 +12,9 @@ eleventyComputed:
     <h1>
       <span class="title">{{ title }}</span>
       {%- if subtitle -%}
-        {{ 6 | indent -}}
-        <span class="subtitle">{{ subtitle }}</span>{{"\n"-}}
-      {%- endif -%}
+        {{- "\n" | indent(6) -}}
+        <span class="subtitle">{{ subtitle }}</span>
+      {%- endif %}
     </h1>
     <time>{{ publishDate | formatDate("yyyy-MM-dd") }}</time>
   </header>
