@@ -5,10 +5,18 @@
   <title>{{ title+" - " if title }}gilchrist.tech</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/common.css">
-  {{-"\n"-}}
+
+  {%- if meta_description -%}{{ 2 | indent -}}
+    {{-"\n" | indent(2) -}}
+    <meta name="description" content="{{ meta_description | trim }}">
+  {%- endif -%}
+
   {%- if head -%}
+    {{-"\n" | indent(2) -}}
     {{ head | assertString | indent | trimRight | safe }}
-  {% endif -%}
+  {%- endif -%}
+
+  {{-"\n"-}}
 </head>
 <body>
   <header id="site-header">

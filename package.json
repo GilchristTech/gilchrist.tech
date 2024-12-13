@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "eleventy",
-    "start": "eleventy --serve"
+    "start": "nodemon -w eleventy.config.js -x eleventy --serve"
   },
   "author": "Gilchrist Pitts",
   "dependencies": {
@@ -13,5 +13,8 @@
     "cheerio": "^1.0.0",
     "jmespath": "^0.16.0",
     "luxon": "^3.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }

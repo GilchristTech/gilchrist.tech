@@ -143,11 +143,20 @@ head: >
       <li>
         {{-"\n      "-}}
         <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-        <time>{{ post.data.publishDate | formatDate("yyyy-MM-dd") }}</time>
-        {%- if post.data.summary -%}
+
+        {%- if post.data.publishDate -%}
+          <time>{{ post.data.publishDate | formatDate("yyyy-MM-dd") }}</time>
+        {%- endif -%}
+
+        {% if post.data.previewImage %}
+          <a href="{{ post.url }}"><img src="{{ post.data.previewImage }}"></a>
+        {% endif %}
+
+        {%- set post_summary = post.data.summary or post.data.meta_description -%}
+        {%- if post_summary -%}
           {{-"\n"-}}
           {%- indent 6 -%}
-            <p>{{- post.data.summary -}}</p>
+            <p class="summary">{{- post_summary -}}</p>
           {%- endindent -%}
         {%- endif -%}
         {{-"\n    "-}}

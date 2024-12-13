@@ -97,15 +97,55 @@ section#posts {
     padding: 0;
 
     li {
+      position: relative;
+
+      /*
+        If this article box has an image, make space for it and
+        position the image at the right.
+      */
+      &:has(img) {
+        /*
+        padding-right: 142px;
+
+        img {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+
+          width: 98px;
+          margin: 8px;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+        */
+
+        img {
+          float: right;
+          width: 100px;
+          height: auto;
+          margin-right: -32px;
+          border-radius: 6px;
+        }
+      }
+
       h3 {
         margin: 0;
         padding: 0;
         border: none;
       }
+
       p {
         margin: 0;
         margin-top: 4px;
         & + p { margin-top: 8px }
+        color: #111;
+        font-size: 0.95em;
+
+        &:first-of-type {
+          margin-top: 1em;
+        }
       }
 
       border: 1px solid #8888;
