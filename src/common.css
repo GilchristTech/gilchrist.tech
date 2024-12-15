@@ -77,83 +77,74 @@ nav ul {
 }
 
 .vertical-split {
-  display: grid;
   max-width: 1200px;
-
-  --split-width:     350px;
-
-  h1,h2,h3 {
-    @media (max-height: 1500px) {
-      /*margin-top: 15dvmin;*/
-    }
-  }
-
-  & img {
-    object-fit: contain;
-    object-position: center;
-    @media (max-width: 900px) {
-      width: 100%;
-      margin: 0 auto;
-      max-height: 50dvh;
-    }
-  }
 
   @media (
     (min-width: 900px) or
     ((orientation: landscape) and (min-width: 750px)) 
   ){
-    & img {
-      max-width: 100dvh;
-    }
+    display: grid;
+    --split-width: 350px;
+
+    padding: 1em;
 
     grid-template-columns: var(--split-width) auto;
+
     grid-column-gap: 2em;
     @media (max-width: 1000px) {
       grid-column-gap: 1em;
-    }
-    padding: 1em;
-    position: relative;
-
-    /*
-      Child elements can have these classes
-      to control their placement in the split layout.
-    */
-    & > .left  { grid-column: 1 }
-    & > .right { grid-column: 2 }
-    & > .span  { grid-row: 1 / span 9999 }
-    & > .span.vertical-center {
-      align-self: center;
     }
 
     /*
       By default, place items in the left column,
       unless this has the .right class
     */
-    & > * { grid-column: 1; }
+    & > :where(*) { grid-column: 1;          }
+    & > .span     { grid-row: 2 / span 9999; }
+    & > .slider   { grid-column: 2;          }
 
-    &.right {
-      & > * { grid-column: 2 }
-      & > .slider {
-        grid-column: 1;
-      }
+    &.flip {
+      & > :where(*) { grid-column: 2; }
+      & > .slider   { grid-column: 1; }
+      & > .span     { grid-row: 1 / span 9999; }
+    }
+
+    & > .left  { grid-column: 1 }
+    & > .right { grid-column: 2 }
+
+    & > .span.vertical-center {
+      align-self: center;
     }
 
     & > .slider {
-      grid-column: 2;
       grid-row: 1 / span 9999;
+    }
 
-      display: flex;
-      flex-direction: column;
+    & > img.slider {
+      position: sticky;
+      top: 0%;
+      width:  100%;
+      height: 100%;
+      max-height: min(100%, 100vh);
+      max-height: min(100%, 100dvh);
+    }
 
+    & > div.slider {
       & :first-child {
         position: sticky;
         top: 0%;
         padding-top: 10dvh;
         padding-bottom: 5dvh;
+
+        max-height: 100%;
+        max-height: min(100%, 100vh);
+        max-height: min(100%, 100dvh);
+
         @media (min-height: 900px) {
           padding-top: 15dvh;
           padding-bottom: 0;
         }
+
         @media (min-height: 1500px) {
           padding: 0;
           padding-top: 100px;
@@ -161,6 +152,18 @@ nav ul {
       }
     }
   }
+}
+
+.vertical-split > :where(img),
+.vertical-split > .slider > :where(img) {
+  margin:     0 auto;
+  width:      auto;
+  max-height: 200px;
+  max-height: 50vh;
+  max-height: 50dvh;
+
+  object-fit: contain;
+  object-position: center;
 }
 
 

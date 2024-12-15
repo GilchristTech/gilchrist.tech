@@ -12,9 +12,7 @@ head: >
     <span class="subtitle">Twenty years of self-directed software development</span>
   </h1>
 
-  <div class="slider">
-    <img class="ink" src="/static/inktober-exhausted.webp" alt="Inktober Prompt: Exhausted. Depicted: me after Inktober">
-  </div>
+  <img class="ink slider" src="/static/inktober-exhausted.webp" alt="Inktober Prompt: Exhausted. Depicted: me after Inktober">
 
   {#- Fetch a short about-me blurb from the About page's frontmatter -#}
   {{-"\n\n"}}{{- collections.all | search(
@@ -26,15 +24,13 @@ head: >
   </p>
 </section>
 
-<section id="current-project" class="vertical-split right" style="--split-width: 45%;">
+<section id="current-project" class="vertical-split flip" style="--split-width: 45%;">
   <h2>
     <span class="title">Current Project: Interbuilder</span>
     <span class="subtitle">Automating static web workflows</span>
   </h2>
 
-  <div class="slider">
-    <img class="ink" src="/static/inktober-dizzy.webp" alt="Inktober prompt: Dizzy">
-  </div>
+  <img class="ink slider" src="/static/inktober-dizzy.webp" alt="Inktober prompt: Dizzy">
 
   <a  class="github button ink"
       href="https://github.com/GilchristTech/interbuilder"
@@ -56,9 +52,7 @@ head: >
     Other Projects
   </h2>
 
-  <div class="slider">
-    <img class="ink" src="/static/inktober-freeze.webp" alt="Inktober prompt: Freeze">
-  </div>
+  <img class="ink slider" src="/static/inktober-freeze.webp" alt="Inktober prompt: Freeze">
 
   <ul>
     <li id="hefoki">
@@ -78,7 +72,7 @@ head: >
       </nav>
     </li>
 
-    <li id="flef" class="vertical-split" style="--split-width: auto; --split-min-width: 1000px">
+    <li id="flef" class="vertical-split" style="--split-width: auto">
       <h3>Flef</h3>
 
       <img
@@ -87,7 +81,7 @@ head: >
         alt="Flef logo"
         style="
           max-width: 200px;
-          padding:    1em;
+          padding:   1em;
           opacity:   0.5;
         "
       >
