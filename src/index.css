@@ -104,28 +104,10 @@ section#posts {
         position the image at the right.
       */
       &:has(img) {
-        /*
-        padding-right: 142px;
-
-        img {
-          position: absolute;
-          top: 0px;
-          right: 0px;
-          bottom: 0px;
-
-          width: 98px;
-          margin: 8px;
-          height: 100%;
-          object-fit: contain;
-          object-position: center;
-        }
-        */
-
         img {
           float: right;
           width: 100px;
           height: auto;
-          margin-right: -32px;
           border-radius: 6px;
         }
       }

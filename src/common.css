@@ -78,15 +78,15 @@ nav ul {
 
 .vertical-split {
   max-width: 1200px;
+}
 
+.vertical-split {
   @media (
     (min-width: 900px) or
     ((orientation: landscape) and (min-width: 750px)) 
   ){
     display: grid;
     --split-width: 350px;
-
-    padding: 1em;
 
     grid-template-columns: var(--split-width) auto;
 
@@ -101,11 +101,11 @@ nav ul {
     */
     & > :where(*) { grid-column: 1;          }
     & > .span     { grid-row: 2 / span 9999; }
-    & > .slider   { grid-column: 2;          }
+    & > .slide   { grid-column: 2;          }
 
     &.flip {
       & > :where(*) { grid-column: 2; }
-      & > .slider   { grid-column: 1; }
+      & > .slide   { grid-column: 1; }
       & > .span     { grid-row: 1 / span 9999; }
     }
 
@@ -116,11 +116,12 @@ nav ul {
       align-self: center;
     }
 
-    & > .slider {
+    & > .slide {
       grid-row: 1 / span 9999;
     }
 
-    & > img.slider {
+    & > picture.slide > :is(img, src),
+    & > img.slide {
       position: sticky;
       top: 0%;
       width:  100%;
@@ -129,7 +130,7 @@ nav ul {
       max-height: min(100%, 100dvh);
     }
 
-    & > div.slider {
+    & > div.slide {
       & :first-child {
         position: sticky;
         top: 0%;
@@ -155,7 +156,7 @@ nav ul {
 }
 
 .vertical-split > :where(img),
-.vertical-split > .slider > :where(img) {
+.vertical-split > .slide > :where(img) {
   margin:     0 auto;
   width:      auto;
   max-height: 200px;

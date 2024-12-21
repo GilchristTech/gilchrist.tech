@@ -12,7 +12,10 @@ head: >
     <span class="subtitle">Twenty years of self-directed software development</span>
   </h1>
 
-  <img class="ink slider" src="/static/inktober-exhausted.webp" alt="Inktober Prompt: Exhausted. Depicted: me after Inktober">
+  <picture class="slide">
+    <source class="ink" srcset="/static/inktober-exhausted.webp" alt="Inktober Prompt: Exhausted. Depicted: me after Inktober">
+    <img class="ink" src="/static/inktober-exhausted.jpg" width="400" alt="Inktober Prompt: Exhausted. Depicted: me after Inktober">
+  </picture>
 
   {#- Fetch a short about-me blurb from the About page's frontmatter -#}
   {{-"\n\n"}}{{- collections.all | search(
@@ -30,7 +33,10 @@ head: >
     <span class="subtitle">Automating static web workflows</span>
   </h2>
 
-  <img class="ink slider" src="/static/inktober-dizzy.webp" alt="Inktober prompt: Dizzy">
+  <picture class="slide">
+    <source class="ink" srcset="/static/inktober-dizzy.webp" alt="Inktober prompt: Dizzy">
+    <img class="ink" src="/static/inktober-dizzy.jpg" width="250" alt="Inktober prompt: Dizzy">
+  </picture>
 
   <a  class="github button ink"
       href="https://github.com/GilchristTech/interbuilder"
@@ -52,7 +58,10 @@ head: >
     Other Projects
   </h2>
 
-  <img class="ink slider" src="/static/inktober-freeze.webp" alt="Inktober prompt: Freeze">
+  <picture class="slide">
+    <source class="ink" srcset="/static/inktober-freeze.webp" alt="Inktober prompt: Freeze">
+    <img class="ink" src="/static/inktober-freeze.jpg" width="250" alt="Inktober prompt: Freeze">
+  </picture>
 
   <ul>
     <li id="hefoki">
@@ -142,8 +151,9 @@ head: >
           <time>{{ post.data.publishDate | formatDate("yyyy-MM-dd") }}</time>
         {%- endif -%}
 
-        {% if post.data.previewImage %}
-          <a href="{{ post.url }}"><img src="{{ post.data.previewImage }}"></a>
+        {%- set post_thumbnail = post.data.articleThumb or post.data.articleImage -%}
+        {% if post_thumbnail %}
+          <a href="{{ post.url }}"><img src="{{ post_thumbnail }}"></a>
         {% endif %}
 
         {%- set post_summary = post.data.summary or post.data.meta_description -%}
