@@ -8,6 +8,11 @@
 
   {%- if meta_description -%}{{ 2 | indent -}}
     {{-"\n" | indent(2) -}}
+    <meta property="og:image" content="{{ metaImage }}" />
+  {%- endif -%}
+
+  {%- if meta_description -%}{{ 2 | indent -}}
+    {{-"\n" | indent(2) -}}
     <meta name="description" content="{{ meta_description | trim }}">
   {%- endif -%}
 

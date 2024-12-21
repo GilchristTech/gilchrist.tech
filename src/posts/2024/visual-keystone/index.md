@@ -3,6 +3,7 @@ title:    Visual Keystone
 subtitle: Things learned creating the design of this site's remake.
 publishDate: 2024-12-20
 tags: [11ty, design, this-site]
+metaImage:    /static/inktober-dark.webp
 articleImage: /static/inktober-dark.webp
 articleThumb: /static/inktober-dark-thumb.jpg
 head: |
