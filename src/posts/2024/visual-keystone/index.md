@@ -2,6 +2,8 @@
 title:    Visual Keystone
 subtitle: Things learned creating the design of this site's remake.
 publishDate: 2024-12-20
+editDates:
+  - 2024-12-31
 tags: [11ty, design, this-site]
 metaImage:    /static/inktober-dark.webp
 articleImage: /static/inktober-dark.webp
@@ -10,7 +12,7 @@ head: |
   <script type="module" src="./static/demo-ink.js"></script>
   <script type="module" src="./static/demo-layout.js"></script>
 
-  <style>
+  <style >
     .limit-code-height > pre {
       height: 300px;
       height: max(300px, 50vh);
@@ -86,20 +88,20 @@ meta_description: |
 
 <img class="article-float" src="{{ articleImage }}">
 
-I last touched this website three years ago. Back then, it was a single-page
-site with a custom Webpack setup, using Webpack like a static site generator
-through Nunjucks templating. Now I've remade, rewrote, and redesigned it with
-11ty, which is far nicer to work with. There were several such attempts, all
-failing to gain traction. Among these attempts, I lost the momentum of
-inspiration, or had none at all, only knowing I wanted to make the site anew
-but without the actual want to do so.
+I last touched this website three years ago. Back then, it was a
+single-page site with a custom Webpack setup, using Webpack like
+a static site generator through Nunjucks templating. Now I've
+remade, rewrote, and redesigned it with 11ty. There were several
+such attempts, all failing to gain traction. Among these
+attempts, I lost the momentum of inspiration or had none at all,
+only knowing I wanted to make the site anew but without the
+actual want to do so.
 
-The programming was easy. The writing and content was not. This
-time was different, because I realized something: at the core of
-what I realized is a concept I'm calling the "visual keystone".
-In picking a single thing to base my visual design around, upon
-which to base other decisions, the rest came; clearing my
-writer's block.
+The coding was easy. The writing and content were not, but this
+time I finished the redesign. This time was different because I
+realized something, a concept I'm calling the "visual keystone".
+After picking a single thing to base my visual design around, upon
+which to form other decisions, the rest came.
 
 ## Design: The Eternal Enemy of Programmers
 
@@ -139,7 +141,7 @@ program or a developer?
 
 My answer to this problem takes inspiration from O'Reilly and
 Manning books: <em>anything</em>. Here's a couple of their books,
-off my shelf:
+off my book shelf:
 
 <div class="books-container">
   <img src="./static/oreilly-python-for-data-analysis.webp"
@@ -180,9 +182,9 @@ draw.
 With all these drawings sitting doing nothing, I may as well use
 them to solve my problem! If a drawing tangentially relates to a
 subject I'm presenting, all the better, but relevance is
-unimportant. And this realization it doesn't matter is
-liberating. It refocuses the design process from what I *want*
-onto what I *have*.
+unimportant. The realization it doesn't matter is liberating. It
+refocuses the design process from what I *want* onto what I
+*have*.
 
 This site was redesigned several times before I realized this.
 Once I decided to use my illustrations, once I decided on this
@@ -305,7 +307,7 @@ with one.
 Even though this site has a light theme, even though there is
 no dark theme, even though a light theme is *better* for this
 website, I am a creature of the night and yearn for my website's
-embrace of the dark. And if one day I put a dark-theme toggle
+embrace of the dark. Plus, if one day I add a dark-theme toggle
 button, then I get to be one of the cool kids.
 
 Instead of creating a dark theme or a toggle button, I made my
@@ -363,7 +365,7 @@ With the illustrations being my website's chosen visual theme,
 and with a decision on colors made, what remains is
 the layout. 
 
-This redesign has four pages:
+At the time of writing, this redesign has four pages:
 [Home](/),
 [About](/about),
 [Interbuilder](/interbuilder),
@@ -525,22 +527,24 @@ images.
 
 ## Inconclusion
 
-This article was more ambitious before now, but that was
+This article was more ambitious in its early drafts, but that was
 preventing me from finishing it. Ironically, there was a portion
 on accepting incompleteness in order to move things along, and
 holding onto that held back my progress. Similarly, I also wrote
 about splitting and distributing content across multiple pages,
 and I wound up doing that in this article, moving 1500 words into
-their own documents. Earlier drafts had sections on the content
-writing and coding the static site generation.  It's possible I
-talk more about these things in the future, but I figured it best
-to trim the scope of the article. Focus is a good thing.
+their own documents. Earlier drafts had sections on the site's
+written content and coding the static site generation.  It's
+possible I talk more about these things in the future, but I
+figured it best to trim the scope of the article. Focus is a good
+thing.
 
 Ultimately, if I were to distill my recent efforts into advice
 for other developers who need to perform some design work, figure
 out what you have. Perhaps you have some software you can compile
 into a web-based demo. Or if not, perhaps pick an arbitrary image
-theme, as I did. Then, take what you have and use that as your
-visual keystone. That demo needs a color scheme that frames it
-well. Images with texture can look good next to flat colors.
+theme, as I did. Maybe you're working with people who have visual
+assets. Whatever the case, take what you have and use that as
+your visual keystone. That demo needs a color scheme which frames
+it well. Images with texture can look good next to flat colors.
 Hopefully from there, the rest will come easily.
