@@ -92,10 +92,10 @@ I last touched this website three years ago. Back then, it was a
 single-page site with a custom Webpack setup, using Webpack like
 a static site generator through Nunjucks templating. Now I've
 remade, rewrote, and redesigned it with 11ty. There were several
-such attempts, all failing to gain traction. Among these
-attempts, I lost the momentum of inspiration or had none at all,
-only knowing I wanted to make the site anew but without the
-actual want to do so.
+such attempts, all failing to gain traction. Among these, I lost
+the momentum of inspiration or had none at all, only knowing I
+wanted to make the site anew but without actual direction to do
+so.
 
 The coding was easy. The writing and content were not, but this
 time I finished the redesign. This time was different because I
@@ -187,12 +187,13 @@ refocuses the design process from what I *want* onto what I
 *have*.
 
 This site was redesigned several times before I realized this.
+Or at least, attempts were made.
 Once I decided to use my illustrations, once I decided on this
 one characteristic from which other design decisions would
 derive, everything else became easier. That was the most
 important thing: a central, visual keystone.
 
-### Making a light theme even though I'm a computer vampire and light themes burn my eyes and flesh
+### Making a light theme even though I'm a computer vampire and light themes burn
 
 Choosing my ink illustrations as the imagery to appear throughout
 this site, I needed to determine how the other aspects of its
@@ -233,7 +234,7 @@ the site, two images differentiate them.
 As for color, I'm breaking away from the inspiration I find in
 O'Reilly and Manning covers. A design choice which works well for
 them is pairing a bold, solid color with their illustrations.
-Solid band of this color will feature prominently on the
+Solid bands of this color will feature prominently on the
 background of the book. If illustration is the primary trait of
 their designs, pairing them with a vivid, solid color is the
 secondary. Most of their illustrations will be in front of a
@@ -253,7 +254,7 @@ An example of this is found in the "Other Projects" section in my
 front page. One of the projects I list, <a
 href="https://github.com/GilchristTech/flef">Flef</a>, has a
 red logo. Currently, the other projects do not. Emblazoning the
-page in its full crimson vibrancy, it throws things off a bit. In
+page in crimson vibrancy, it throws things off a bit. In
 order to maintain the balance of contrast at that part of the
 page, I reduce its opacity.
 
@@ -261,7 +262,7 @@ page, I reduce its opacity.
   <figure>
     <figcaption>
       With the Flef logo at full opacity, its contrast against
-      the rest of the page causes it to stick out, imbalancingg
+      the rest of the page causes it to stick out, imbalancing
       the layout.
     </figcaption>
     <img src="./static/site-screenshot-more-red.webp">
@@ -283,7 +284,7 @@ the color towards the same medium-grey. All-in-all, the intent of
 these decisions is to give the site a "clear" look, while also
 benefiting from the high contrast of the drawings. For this
 reason, the site's appearance deviates little from the browser's
-defaults theme.
+default theme.
 
 Used deliberately, I suspect parts of the browser defaults may be
 an effective graphical design choice in websites.
@@ -312,23 +313,22 @@ button, then I get to be one of the cool kids.
 
 Instead of creating a dark theme or a toggle button, I made my
 `<img>` tags uselessly dark-theme friendly. Well, it's not *that*
-useless. Some browsers support overriding the background color of
-a page to enforce a dark theme. Under normal browsing conditions,
+useless, as some browsers support overriding the background color
+of a page to enforce a dark theme. I defined a CSS rule for
+elements with the `.ink` class, which sets black lines in the
+image to to take on the inverse color of the background behind
+them.
+
+Under normal browsing conditions, because of the white background
 you won't be able to see this `<img>` styling feature, but in
 browsers which support it, the black pixels in images with the
 `.ink` class invert the background behind them. For black ink on
-a white background, this does absolutely nothing.
-
-Instead of creating a dark theme or a toggle button, I made my
-`<img>` tags uselessly dark-theme friendly. Well, it's not *that*
-useless. Some browsers support overriding the CSS of a into a
-page to enforce a dark theme. When that happens, black pixels in
-images with the `.ink` class invert the background behind them.
-For black ink on a white background, this does absolutely
-nothing.
+a white background, this does not change the image. However, if
+you change the background color, the image will pick a color to
+so differentiate itself.
 
 <div class="only-screen">
-  <p>But in the interest of demonstration, here's an interactive demo:</p>
+  <p>Here's an interactive demo to show this:</p>
 
   <div class="demo-container">
     <ink-demo style="margin: 0 -0.5em; min-height: 175px;"></ink-demo>
@@ -370,7 +370,7 @@ At the time of writing, this redesign has four pages:
 [About](/about),
 [Interbuilder](/interbuilder),
 and [Hefoki](/hefoki).
-The last two are project pages. Functionally, these pages are
+The last two are project pages. Functionally, these are
 intended as overviews. On such pages, their design can be more
 presentational, more fancy. This is different from if the pages
 were are like the one you're reading now, a page comprising
@@ -463,9 +463,7 @@ Here's an abridged version of the current CSS:
       & > .span     { grid-row:    1 / span 9999; }
     }
 
-    & > .left  { grid-column: 1 }
-    & > .right { grid-column: 2 }
-    & > .slide { grid-row:    1 / span 9999; }
+    & > .slide { grid-row: 1 / span 9999; }
 
     & > picture.slide > :is(img, src),
     & > img.slide {
@@ -507,13 +505,13 @@ This does various things.
   the site being readable in IE5-6 and Safari from 2005, I think
   it's fine.
 
-* This component is very simple to add variety to site the layout by
+* This component very easily adds variety to site the layout by
   horizontally swapping which columns have the image and text
   content. The `.flip` class will do this.
 
-* A CSS variable to controls the size of the split, and in HTML
+* A CSS variable to controls the size of the split. In HTML
   an inline style can change this value. This makes the design
-  quick to change, while maintaining responsiveness.
+  quick to change while maintaining responsiveness.
 
 * Pure CSS lets the browser do what it's good at, making the
   page faster.
@@ -526,6 +524,9 @@ be changed. And most importantly, it works for showing the
 images.
 
 ## Inconclusion
+
+My view on what constitutes a good design is subject to change,
+but this is where it's at now.
 
 This article was more ambitious in its early drafts, but that was
 preventing me from finishing it. Ironically, there was a portion
