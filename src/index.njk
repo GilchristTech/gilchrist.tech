@@ -29,28 +29,43 @@ head: >
 
 <section id="current-project" class="vertical-split flip" style="--split-width: 45%;">
   <h2>
-    <span class="title">Current Project: Interbuilder</span>
-    <span class="subtitle">Automating static web workflows</span>
+    <span class="title">Current Project: Auto-shooter Roguelike</span>
   </h2>
 
   <picture class="slide">
-    <source class="ink" srcset="/static/inktober-dizzy.webp" alt="Inktober prompt: Dizzy">
-    <img class="ink" src="/static/inktober-dizzy.jpg" width="250" alt="Inktober prompt: Dizzy">
+    <source class="ink" srcset="/static/inktober-ancient.webp" alt="Inktober prompt: Ancient">
+    <img class="ink" src="/static/inktober-ancient.jpg" width="250" alt="Inktober prompt: Ancient">
   </picture>
 
-  <a  class="github button ink"
-      href="https://github.com/GilchristTech/interbuilder"
-      target="_blank"
-  >
-    <img src="/static/github-mark.svg" alt="GitHub logo">GitHub repo
-  </a>
+  <p>My current project is an untitled, web-based, auto-shooter
+  roguelike game, where you control a party of characters to
+  progress through a gauntlet of dungeon floors, brimming with
+  hundreds of enemies. With the only controls moving you, your
+  party will automatically attack your foes, and between floors
+  of the dungeon, these characters will level up and encounter
+  item shops. The key to strategy in this game is how you trade
+  items between your party members.</p>
 
-  {#- Fetch a summary about Interbuilder from its page's frontmatter -#}
+  <p>Although I am quickly making progress on this game, I'm
+  intending to polish it more before making it publicly
+  playable.</p>
+
+  <h3>Technical details</h3>
+  <ul>
+    <li>Written in pure VanillaJS</li>
+    <li>Bundled with Vite</li>
+    <li>Custom engine for state and event management</li>
+    <li>Small enough to fit on a floppy diskette</li>
+  </ul>
+
+  {#
+  // Fetch a summary from the page's frontmatter
   {{-"\n\n"}}{{- collections | search(
     "all[?@.inputPath == './src/interbuilder.njk'].data | [0].shortHtml"
   ) | assertString | indent | trimRight | safe }}
 
   <p style="text-align: center"><a href="/interbuilder" class="button read-more">More about Interbuilder</a></p>
+  -#}
 </section>
 
 <section id="other-projects" class="vertical-split" style="--split-width:60%">
@@ -64,6 +79,23 @@ head: >
   </picture>
 
   <ul>
+    <li id="interbuilder">
+      <h3>Interbuilder</h3>
+      {#- Fetch a summary about Interbuilder from its page's frontmatter -#}
+      {%- set interbuilder = collections | search(
+        "all[?@.inputPath == './src/interbuilder.njk'].data | [0]"
+      )-%}
+      {{-"\n\n"}}{{- interbuilder.shortHtml | assertString | indent(6) | trimRight | safe }}
+
+      <nav style="display: flex; flex-flow: row wrap; align-items: center">
+        <a href="/interbuilder" class="button read-more">More about Interbuilder</a>
+
+        <a class="github button ink" href="{{ interbuilder.repository }}" target="_blank">
+          <img src="/static/github-mark.svg" alt="GitHub logo">GitHub repo
+        </a>
+      </nav>
+    </li>
+
     <li id="hefoki">
       <h3>Hefoki</h3>
       {#- Fetch a summary about Hefoki from its page's frontmatter -#}
