@@ -80,6 +80,53 @@ main > section + section {
 }
 
 
+section#small-projects {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 20vh;
+
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    @media (max-width: 600px) {
+      flex-flow: column;
+    }
+    justify-content: center;
+    gap: 2em;
+    padding: 0;
+
+    li {
+      list-style: none;
+      flex-basis: 200px;
+
+      h3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+        font-weight: bold;
+        border: none;
+        gap: 1em;
+        margin: 0;
+        padding: 0;
+
+        img {
+          height: 2em;
+          width: auto;
+          object-fit: contain;
+          margin-top: -0.5em;
+          margin-bottom: -1.5em;
+        }
+        
+        p {
+          font-size: 0.9em;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+
 section#posts {
   min-height: auto; /* Unset page default value for sections */
   padding:    2em;

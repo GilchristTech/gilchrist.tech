@@ -37,8 +37,8 @@ head: >
     <img class="ink" src="/static/inktober-ancient.jpg" width="250" alt="Inktober prompt: Ancient">
   </picture>
 
-  <p>My current project is an untitled, web-based, auto-shooter
-  roguelike game, where you control a party of characters to
+  <p>My current project is web-based, auto-shooter
+  roguelike game where you control a party of characters to
   progress through a gauntlet of dungeon floors, brimming with
   hundreds of enemies. With the only controls moving you, your
   party will automatically attack your foes, and between floors
@@ -55,6 +55,7 @@ head: >
     <li>Written in pure VanillaJS</li>
     <li>Bundled with Vite</li>
     <li>Custom engine for state and event management</li>
+    <li>In-memory manipulation of PNG files for palette swaps</li>
     <li>Small enough to fit on a floppy diskette</li>
   </ul>
 
@@ -97,7 +98,7 @@ head: >
     </li>
 
     <li id="hefoki">
-      <h3>Hefoki</h3>
+      <h3><a target="_blank" href="https://hefoki.today/">Hefoki</a></h3>
       {#- Fetch a summary about Hefoki from its page's frontmatter -#}
       {%- set hefoki = collections | search(
         "all[?@.inputPath == './src/hefoki.njk'].data | [0]"
@@ -167,6 +168,55 @@ head: >
     </li>
   </ul>
 </section>{{"\n"-}}
+
+<section id="small-projects">
+  <h2>Modules and Small Projects</h2>
+
+  <p>These are things I've worked on, that while
+  smaller, I still think are worth note.</p>
+
+  <ul>
+    <li id="tinysplit">
+      <a class="ink" href="https://github.com/GilchristTech/tinysplit" target="_blank">
+        <h3>
+          <span>TinySplit</span>
+          <img src="/static/github-mark.svg" alt="GitHub Repo">
+        </h3>
+      </a>
+      <p>A lightweight document-like file format oriented around
+      streaming. Although the repo contains example
+      implementations, it's designed to be simple enough for a
+      developer to write their own from memory with basic string
+      functions.</p>
+    </li>
+
+    <li id="brofert">
+      <a class="ink" href="https://github.com/GilchristTech/brofert" target="_blank">
+        <h3>
+          <span>Brofert</span>
+          <img src="/static/github-mark.svg" alt="GitHub Repo">
+        </h3>
+      </a>
+      <p>Short for Browser Feature Report, this is a single HTML
+      page which detects features in the user's browser and
+      generates a JSON report. And it does this while targeting
+      <b>IE5</b> and <b>Netscape Navigator 6</b>.</p>
+    </li>
+
+    <li id="make-element">
+      <a class="ink" href="https://github.com/GilchristTech/make-element" target="_blank">
+        <h3>
+          <span>make-element</span>
+          <img src="/static/github-mark.svg" alt="GitHub Repo">
+        </h3>
+      </a>
+      <p>JavaScript module exporting one function:
+      <code>makeElement()</code>. Through recursive descent of its
+      object argument, it creates HTML elements, styles, and events.
+      Initially part of my game, I find it useful for
+      VanillaJS, broadly.</p>
+    </li>
+</section>
 
 {%- if collections.posts.length -%}
 {{-"\n"-}}
