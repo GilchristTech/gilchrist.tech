@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *,*::before,*::after { box-sizing: inherit; min-width: 0; }
+    body {
+      position: relative;
+      box-sizing: border-box;
+      font-family: sans-serif;
+      min-height: 100dvh;
+      margin: 0;
+      background: linear-gradient(30deg, #202020, #282828);
+      /*
+      background: radial-gradient(#0008, #000c), url(/static/____.png);
+      background-size: cover;
+      background-position: top center;
+      */
+      color: white;
+    }
+
+    img {
+      image-rendering: pixelated;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      font-size: inherit;
+      background: url(static/grain.png);
+      border: 0.15em outset #20203b91;
+      color: white;
+      padding: 0.25em;
+      box-shadow: 0px 0px 0.10em #fff2;
+    }
+
+    .layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .layer.dim { background: #0008; }
+
+    canvas.layer {
+      overscroll-behavior: none;
+      touch-action: none;
+    }
+
+    h1, h2 {
+      display: block;
+      text-align: center;
+      user-select: none;
+      margin: 0 auto 1em auto;
+      font-family: serif;
+      border-bottom: 4px double white;
+    }
+
+    h1 + h2 {
+      border-bottom: none;
+      margin: 0;
+      font-weight: normal;
+    }
+
+    h1:has(+h2) {
+      margin-bottom: 0;
+    }
+
+    h3,h4,h5,h6 {
+      margin: 0;
+    }
+
+    .character-select {
+      overflow-y: scroll;
+      color: white;
+      font-size: 2em;
+      padding: 1em;
+    }
+
+    .character-select > .characters-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      justify-content: center;
+      margin: 10% auto;
+      max-width: 400px;
+    }
+
+    .character-select .characters-box button {
+      flex-direction: column;
+      justify-content: space-around;
+      color: white;
+      margin: 4px;
+      font-family: serif;
+      font-size: 1em;
+    }
+
+    .character-select button img {
+      height: 2em;
+      width:  2em;
+    }
+
+    .map-background {
+      background-image: url(static/brick-tile.png);
+      background-origin: border-box;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    p { margin: 0; }
+
+    @media (max-width: 450px) {
+      .mobile-flex-column {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

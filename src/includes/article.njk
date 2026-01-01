@@ -19,5 +19,9 @@ eleventyComputed:
     <time>{{ publishDate | formatDate("yyyy-MM-dd") }}</time>
   </header>
 
-  {{"\n"}}{{- content | indentHtml | safe }}
-</article>
+  {{"\n"}}{{- content | indentHtml | trimRight | safe -}}
+{{-"\n"}}</article>
+
+{%- if afterArticle %}
+  {{-"\n\n"}}{{- afterArticle | safe -}}
+{% endif %}

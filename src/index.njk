@@ -235,7 +235,7 @@ head: >
 <section id="posts">
   <h2>Posts</h2>
   <ul>
-    {%- for post in collections.posts -%}
+    {%- for post in collections.posts | reverse -%}
       {{-"\n"}}{{- 4 | indent -}}
       <li>
         {{-"\n      "-}}

@@ -44,23 +44,29 @@ function indentHtml (text, width=2) {
 
   function format (node, pre_tag_level=0) {
     $(node).contents().each((_, element) => {
-      if (element.type === "tag") {
-        // Because any <pre> ancestor invalidates additional
-        // indentation of its children, do not recurse if a <pre>
-        // tag is encountered.
-        //
-        if (element.name != "pre") {
-          format(element, pre_tag_level);
-        }
-        return;
-      }
-      else if (element.type === "text") {
-        // Indent text nodes
-        element.data = element.data.replaceAll("\n", "\n"+align);
-        return;
-      }
+      switch (element.type) {
+        case "tag":
+          // Because any <pre> ancestor invalidates additional
+          // indentation of its children, do not recurse if a <pre>
+          // tag is encountered.
+          //
+          if (element.name != "pre") {
+            format(element, pre_tag_level);
+          }
+          return;
 
-      throw TypeError(`Unknown element type: ${element.type}`);
+        case "style":
+        case "script":
+          return;
+
+        case "text":
+          // Indent text nodes
+          element.data = element.data.replaceAll("\n", "\n"+align);
+          return;
+
+        default:
+          throw TypeError(`Unknown element type: ${element.type}`);
+      }
     });
   }
 
